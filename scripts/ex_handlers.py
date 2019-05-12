@@ -1,21 +1,11 @@
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-from functools import wraps
-def send_action(action):
-    """Sends `action` while processing func command."""
 
-    def decorator(func):
-        @wraps(func)
-        def command_func(update, context, *args, **kwargs):
-            context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
-            return func(update, context, *args, **kwargs)
-
-        return command_func
-
-    return decorator
-send_typing_action = send_action(ChatAction.TYPING)
-
+def get_closest(photos, desired_size):
+    def diff(p): return p.width - desired_size[0], p.height - desired_size[1]
+    def norm(t): return abs(t[0] + t[1] * 1j)
+    return min(photos, key=lambda p:  norm(diff(p)))
 
 def start(bot, update):
     update.message.reply_text('Приветсвутю тебя!')
