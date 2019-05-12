@@ -1,5 +1,21 @@
-from telegram import ReplyKeyboardMarkup
+from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+
+from functools import wraps
+def send_action(action):
+    """Sends `action` while processing func command."""
+
+    def decorator(func):
+        @wraps(func)
+        def command_func(update, context, *args, **kwargs):
+            context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
+            return func(update, context, *args, **kwargs)
+
+        return command_func
+
+    return decorator
+send_typing_action = send_action(ChatAction.TYPING)
+
 
 def start(bot, update):
     update.message.reply_text('Приветсвутю тебя!')
@@ -29,8 +45,8 @@ def read_doct(bot, update):
         doc_file.download('try_doc.jpg')
 
 
-def bop(bot, update): # пример для менюшки
-    # url = get_url()
+#@send_action(ChatAction.TYPING)
+def bop(bot, update): # пример для менюшки = customKeyboard
     custom_keyboard = [['top-left', 'top-right'],
                        ['bottom-left', 'bottom-right']]
     reply_markup = ReplyKeyboardMarkup(custom_keyboard)
@@ -44,6 +60,9 @@ def bop(bot, update): # пример для менюшки
 
 def docs(bot, update):
     chat_id = update.message.chat_id
+
+    bot.send_chat_action(chat_id=chat_id, action=ChatAction.TYPING) # добавляем эффект typing
+
     read_doct(bot, update)
     send = send_photo(update, chat_id)
     print(send)
@@ -55,6 +74,9 @@ def photos(bot, update):
     print(send)
 
 def text(bot, update):
+    chat_id = update.message.chat_id
+    reply_markup = ReplyKeyboardRemove() # удаляем custom Keyboard
+    bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
     update.message.reply_text('Я жду фотографию')
 
 updater = Updater('690091700:AAFEPFkipSkqkGtOnOouBc5lEYskqQiTiaU')
