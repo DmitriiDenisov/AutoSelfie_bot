@@ -15,8 +15,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/ex_answer_with_photo.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_answer_with_photo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="269">
               <caret line="51" selection-start-line="51" selection-end-line="51" />
@@ -27,11 +27,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/BotHandler.py">
+        <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/BotHandler.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="40" />
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="40" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -40,10 +49,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/ex_send_photo.py">
+        <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_send_photo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+              <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -70,6 +79,7 @@
         <option value="$PROJECT_DIR$/scripts/BotHandler.py" />
         <option value="$PROJECT_DIR$/scripts/Bot_telegram.py" />
         <option value="$PROJECT_DIR$/scripts/main.py" />
+        <option value="$PROJECT_DIR$/../AutoSelfie_bot/.gitignore" />
       </list>
     </option>
   </component>
@@ -90,12 +100,12 @@
         <subPane>
           <expand>
             <path>
-              <item name="AutoSelphi_bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AutoSelphi_bot" type="462c0819:PsiDirectoryNode" />
+              <item name="AutoSelfie_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AutoSelfie_bot" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="AutoSelphi_bot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AutoSelphi_bot" type="462c0819:PsiDirectoryNode" />
+              <item name="AutoSelfie_bot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AutoSelfie_bot" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -381,12 +391,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557668265463</updated>
-      <workItem from="1557668273987" duration="5400000" />
+      <workItem from="1557668273987" duration="5669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5400000" />
+    <option name="totallyTimeSpent" value="5669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -422,27 +432,27 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/ex_answer_with_photo.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_answer_with_photo.py</url>
           <line>23</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/ex_answer_with_photo.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_answer_with_photo.py</url>
           <line>16</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/trash.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/trash.py</url>
           <line>3</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/telegram/ext/updater.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/venv/lib/python3.6/site-packages/telegram/ext/updater.py</url>
           <line>206</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/ex_answer_with_photo.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_answer_with_photo.py</url>
           <line>28</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
@@ -452,17 +462,17 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/ex_send_photo.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_send_photo.py</url>
           <line>13</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/ex_send_photo.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_send_photo.py</url>
           <line>11</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scripts/ex_answer_with_photo.py</url>
+          <url>file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_answer_with_photo.py</url>
           <line>50</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
@@ -470,7 +480,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/telegram/ext/updater.py">
+    <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/venv/lib/python3.6/site-packages/telegram/ext/updater.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
           <caret line="215" column="38" selection-start-line="215" selection-start-column="38" selection-end-line="215" selection-end-column="38" />
@@ -505,40 +515,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/ex_send_photo.py">
+    <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_send_photo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/trash.py">
+    <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/trash.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/BotHandler.py">
+    <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/BotHandler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="40" />
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="40" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/ex_answer_with_photo.py">
+    <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/scripts/ex_answer_with_photo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
           <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AutoSelfie_bot/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
