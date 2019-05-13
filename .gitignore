@@ -1,7 +1,7 @@
 venv/
 .idea/git
 .DS_Store
-models/
-data/
+!models/
+!data/
 .idea/
 token.txt
