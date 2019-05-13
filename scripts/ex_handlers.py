@@ -1,5 +1,20 @@
+import PIL
+import PIL.Image
+import numpy as np
+from keras.models import load_model
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from scripts.metrics import dice_coef_K, my_dice_metric
+from scripts.predict import predict
+
+model = load_model('../models/resnet_weights.17--0.95.hdf5.model',
+                   custom_objects={'dice_coef_K': dice_coef_K, 'my_dice_metric': my_dice_metric})
+print('Model read!')
+
+
+def resize_image(image, target_shape):
+    img = image.resize(target_shape, PIL.Image.ANTIALIAS)
+    return img
 
 
 def get_closest(photos, desired_size):
@@ -13,6 +28,10 @@ def start(bot, update):
 def send_photo(update, chat_id):
     photo = open('photo.png', 'rb')
     send = update.message.reply_photo(photo=photo)
+    return send
+
+def send_photo_2(update, predicted_image):
+    send = update.message.reply_photo(photo=predicted_image)
     return send
 
 
@@ -61,7 +80,11 @@ def docs(bot, update):
 def photos(bot, update):
     chat_id = update.message.chat_id
     read_photo(bot, update)
-    send = send_photo(update, chat_id)
+    image = PIL.Image.open('try.jpg')
+    resized_img = np.array(resize_image(image, (240, 320)))
+    prediction = predict(model, resized_img)
+    predicted_image = PIL.Image.fromarray(prediction, 'RGB')
+    send = send_photo_2(update, predicted_image)
     print(send)
 
 def text(bot, update):
