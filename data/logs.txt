@@ -1,0 +1,8 @@
+chat_id,username,first_name,second_name,text,photo,doc,date
+304640198,DmitriiDenisov,Dmitry,Denisov,/start,,,2019-05-14 00:33:06
+304640198,DmitriiDenisov,Dmitry,Denisov,,1,,2019-05-14 00:38:32
+304640198,DmitriiDenisov,Dmitry,Denisov,,,download.jpeg,2019-05-14 00:39:10
+304640198,DmitriiDenisov,Dmitry,Denisov,/start,,,2019-05-14 00:40:36
+304640198,DmitriiDenisov,Dmitry,Denisov,/start,,,2019-05-14 00:40:37
+304640198,DmitriiDenisov,Dmitry,Denisov,/start,,,2019-05-14 00:40:37
+304640198,DmitriiDenisov,Dmitry,Denisov,,1,,2019-05-14 00:40:40
