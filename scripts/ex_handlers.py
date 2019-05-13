@@ -19,7 +19,8 @@ def send_photo(update, chat_id):
 def read_photo(bot, update):
     files = update.message.photo
     if len(files) > 0:
-        file = files[-1] # лучшее качество:
+        file = get_closest(files, desired_size=(320, 240))
+        # file = files[-1] # лучшее качество:
         # Note: For downloading photos, keep in mind that update.message.photo is an array
         # of different photo sizes. Use update.message.photo[-1] to get the biggest size.
         photo_file = bot.getFile(file)
