@@ -2,18 +2,30 @@ import PIL
 import PIL.Image
 import numpy as np
 from keras.models import load_model
-from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, ChatAction
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, ChatAction, InlineKeyboardMarkup
 from io import BytesIO
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 from scripts.metrics import dice_coef_K, my_dice_metric
-from scripts.predict import predict
-import tensorflow as tf
+# from scripts.predict import predict
+# import tensorflow as tf
 
-model = load_model('../models/resnet_weights.17--0.95.hdf5.model',
-                   custom_objects={'dice_coef_K': dice_coef_K, 'my_dice_metric': my_dice_metric})
-model._make_predict_function()
-graph = tf.get_default_graph()
+# model = load_model('../models/resnet_weights.17--0.95.hdf5.model',
+#                   custom_objects={'dice_coef_K': dice_coef_K, 'my_dice_metric': my_dice_metric})
+# model._make_predict_function()
+# graph = tf.get_default_graph()
 print('Model read!')
+
+all_users = {}
+
+
+def button(bot, update):
+    query = update.callback_query
+    all_users[update.effective_chat.id]['language'] = query.data
+    if query.data == 'English':
+        query.edit_message_text(text="Selected English language")
+    else:
+        query.edit_message_text(text="Выбран Русский язык")
 
 
 def resize_image(image, target_shape):
@@ -28,7 +40,20 @@ def get_closest(photos, desired_size):
 
 
 def start(bot, update):
-    update.message.reply_text('Приветсвутю тебя!')
+    update.message.reply_text('Hi there!')
+    all_users[update.message.chat_id] = {}
+
+    keyboard = [[InlineKeyboardButton("English", callback_data='English'),
+                 InlineKeyboardButton("Russian", callback_data='Russian')]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.message.reply_text('Please choose:', reply_markup=reply_markup)
+
+    #q = bot.send_message(chat_id=update.message.chat_id,
+    #                 text="Please choose language:",
+    #                 reply_markup=reply_markup,
+    #                resize_keyboard=True)
+    #print(q)
+
 
 
 def send_photo(update, chat_id):
@@ -106,7 +131,11 @@ def text(bot, update):
     chat_id = update.message.chat_id
     reply_markup = ReplyKeyboardRemove() # удаляем custom Keyboard
     bot.send_message(chat_id=chat_id, text="I'm back.", reply_markup=reply_markup)
-    update.message.reply_text('Я жду фотографию')
+
+    if all_users[update.message.chat_id]['language'] == 'English':
+        update.message.reply_text('I am waiting for a photo')
+    else:
+        update.message.reply_text('Я жду фотографию')
 
 # https://t.me/socks?server=80.211.195.141&port=1488&user=kurwaproxy&pass=x555abr
 
@@ -121,8 +150,9 @@ REQUEST_KWARGS={
 
 updater = Updater('690091700:AAFEPFkipSkqkGtOnOouBc5lEYskqQiTiaU', request_kwargs=REQUEST_KWARGS)
 dp = updater.dispatcher
-dp.add_handler(CommandHandler('bop', bop))
 dp.add_handler(CommandHandler('start', start))
+updater.dispatcher.add_handler(CallbackQueryHandler(button))
+dp.add_handler(CommandHandler('bop', bop))
 dp.add_handler(MessageHandler(Filters.document, docs))
 dp.add_handler(MessageHandler(Filters.photo, photos))
 dp.add_handler(MessageHandler(Filters.text, text))
