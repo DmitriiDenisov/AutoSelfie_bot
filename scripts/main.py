@@ -2,6 +2,7 @@ import PIL
 import PIL.Image
 import numpy as np
 from keras.models import load_model
+import json
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove, ChatAction, InlineKeyboardMarkup
 from io import BytesIO
@@ -16,7 +17,10 @@ from scripts.metrics import dice_coef_K, my_dice_metric
 # graph = tf.get_default_graph()
 print('Model read!')
 
-all_users = {}
+with open('../data/all_users.json', 'r') as fp:
+    all_users = json.load(fp)
+    for key in all_users.keys()
+
 
 def write_log(update):
     with open('../data/logs.txt', 'a') as text_file:
@@ -128,11 +132,15 @@ def text(bot, update):
     if update.message.text == 'English':
         all_users[chat_id]['language'] = 'English'
         update.message.reply_text('You chosed English language')
+        with open('../data/all_users.json', 'w') as fp:
+            json.dump(all_users, fp)
         default_state(bot, update)
         return True
     elif update.message.text == 'Russian':
         all_users[chat_id]['language'] = 'Russian'
         update.message.reply_text('Ты выбрал Русский язык')
+        with open('../data/all_users.json', 'w') as fp:
+            json.dump(all_users, fp)
         default_state(bot, update)
         return True
     elif update.message.text == 'Описание':
