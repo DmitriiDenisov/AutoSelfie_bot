@@ -4,7 +4,7 @@ from io import BytesIO
 import PIL.Image
 import numpy as np
 from telegram import ReplyKeyboardMarkup, ChatAction
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler
 
 from scripts.get_model import get_model
 from scripts.utils import write_log, read_photo_doc, resize_image, predict
@@ -24,6 +24,8 @@ class AutoSelfieBot:
         dp.add_handler(CommandHandler('start', self.start))
         dp.add_handler(MessageHandler(Filters.document, self.photos))
         dp.add_handler(MessageHandler(Filters.photo, self.photos))
+        dp.add_handler(RegexHandler('(?i).*(хуй|блять|пизда|уебок|ебал|ебать).*', self.bad_words_rus))
+        dp.add_handler(RegexHandler('(?i).*(shit|fuck|bitch|asshole|bint|cock|cunt|faggot).*', self.bad_words_eng))
         dp.add_handler(MessageHandler(Filters.text, self.text))
         updater.start_polling()
         updater.idle()
@@ -113,6 +115,12 @@ class AutoSelfieBot:
                 update.message.reply_text('I am waiting for a photo')
             else:
                 update.message.reply_text('Я жду фотографию')
+
+    def bad_words_rus(self, bot, update):
+        update.message.reply_text('Не обижай бота!')
+
+    def bad_words_eng(self, bot, update):
+        update.message.reply_text('Do not insult the bot!')
 
     def default_state(self, bot, update):
         if self.all_users[update.message.chat_id]['language'] == 'Russian':

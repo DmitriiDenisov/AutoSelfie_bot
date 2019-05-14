@@ -1,6 +1,6 @@
 from scripts.AutoSelfie_bot import AutoSelfieBot
 
-REQUEST_KWARGS={
+REQUEST_KWARGS = {
     'proxy_url': 'socks5://80.211.195.141:1488',
     # Optional, if you need authentication:
     'urllib3_proxy_kwargs': {
