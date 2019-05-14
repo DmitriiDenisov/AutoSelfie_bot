@@ -1,6 +1,8 @@
+from keras.models import load_model
 import numpy as np
-import tensorflow as tf
 import keras.backend as K
+import tensorflow as tf
+
 
 # Объявляем метрики, которые нам вдальнейшем понадобятся:
 def dice_coef_np(y_true, y_pred, smooth=1):
@@ -17,6 +19,7 @@ def dice_coef_batch(y_true_in, y_pred_in):
         metric.append(value)
     return np.mean(metric)
 
+
 def my_dice_metric(label, pred):
     metric_value = tf.py_func(dice_coef_batch, [label, pred], tf.float64)
     return metric_value
@@ -27,3 +30,12 @@ def dice_coef_K(y_true, y_pred, smooth=1):
     y_pred_f = K.flatten(y_pred)
     intersection = K.sum(y_true_f * y_pred_f)
     return (2. * intersection + smooth) / (K.sum(y_true_f) + K.sum(y_pred_f) + smooth)
+
+
+def get_model(model_name):
+    model = load_model('../models/{}'.format(model_name),
+                      custom_objects={'dice_coef_K': dice_coef_K, 'my_dice_metric': my_dice_metric})
+    model._make_predict_function()
+    graph = tf.get_default_graph()
+    print('Model read!')
+    return model, graph
