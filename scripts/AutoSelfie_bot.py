@@ -2,6 +2,7 @@ import json
 from io import BytesIO
 
 import PIL.Image
+import cv2
 import numpy as np
 from telegram import ReplyKeyboardMarkup, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler
@@ -16,7 +17,7 @@ class AutoSelfieBot:
             temp_dict = json.load(fp)
             self.all_users = {int(key): value for key, value in temp_dict.items()}
 
-        # self.model, self.graph = get_model(model_name) # UNCOMMENT !!!
+        self.model, self.graph = get_model(model_name) # UNCOMMENT !!!
 
         updater = Updater(token, request_kwargs=request_kwargs)
         dp = updater.dispatcher
@@ -51,29 +52,57 @@ class AutoSelfieBot:
         #print(q)
     
     def photos(self, bot, update):
+        # Пишем лог
         write_log(update)
         chat_id = update.message.chat_id
         bot.send_chat_action(chat_id=chat_id, action=ChatAction.UPLOAD_PHOTO)  # добавляем эффект загрузки фото
+        # Считываем присланное фото/документ
         read_photo_doc(bot, update)
         try:
             image = PIL.Image.open('../data/try.jpg')
+            # foreground = cv2.imread('../data/try.jpg')
         except:
             if self.all_users[update.message.chat_id]['language'] == 'English':
                 update.message.reply_text('I can not read you doc')
             else:
                 update.message.reply_text('Не могу прочитать ваш документ')
             return False
+        # Делаем предсказание
         resized_img = np.array(resize_image(image, (240, 320))) / 255
-        prediction = predict(self.model, resized_img, self.graph)
+        prediction, alpha = predict(self.model, resized_img, self.graph)
+
+        # Отправляем в Телеграм выделенную фотографию
         predicted_image = PIL.Image.fromarray(prediction)
-    
         bio = BytesIO()
         bio.name = 'image.jpeg'
         predicted_image.save(bio, 'JPEG')
         bio.seek(0)
         update.message.reply_photo(photo=bio)
-        # send = send_photo(update, bio)
-        # print(send)
+
+        # Добавляем фон к фотографии:
+        background = cv2.imread('../data/sea.jpg')
+        foreground = np.array(image)
+        foreground = np.concatenate([foreground[:, :, 2].reshape(foreground.shape[:2] + (1,)),
+                                     foreground[:, :, 1].reshape(foreground.shape[:2] + (1,)),
+                                     foreground[:, :, 0].reshape(foreground.shape[:2] + (1,))], axis=2)
+        foreground = foreground.astype(float)
+        background = background.astype(float)
+        alpha = alpha.astype(float) / 255
+        alpha = np.stack((alpha,) * 3, axis=-1)
+        foreground = cv2.multiply(alpha, foreground)
+        background = cv2.multiply(1.0 - alpha, background)
+        outImage = cv2.add(foreground, background)
+        outImage = np.concatenate([outImage[:, :, 2].reshape(outImage.shape[:2] + (1,)),
+                                    outImage[:, :, 1].reshape(outImage.shape[:2] + (1,)),
+                                    outImage[:, :, 0].reshape(outImage.shape[:2] + (1,))], axis=2)
+
+        # Отправляем в Телеграм с фоном
+        with_background = PIL.Image.fromarray(outImage.astype('uint8'))
+        bio = BytesIO()
+        bio.name = 'image.jpeg'
+        with_background.save(bio, 'JPEG')
+        bio.seek(0)
+        update.message.reply_photo(photo=bio)
         return True
 
     def text(self, bot, update):
@@ -93,19 +122,21 @@ class AutoSelfieBot:
             self.default_state(bot, update)
             return True
         elif update.message.text == 'Описание':
-            update.message.reply_text('Пришли в чат своё селфи, а бот вырежет тебя на фотографии')
+            update.message.reply_text('Пришли в чат своё селфи, а бот выделит тебя на фотографии')
             return True
         elif update.message.text == 'Github проекта':
-            update.message.reply_text('Ссылка: https://github.com/DmitriiDenisov/AutoSelfie_bot')
+            update.message.reply_text('Github бота: https://github.com/DmitriiDenisov/AutoSelfie_bot')
+            update.message.reply_text('Github нейронной сети: https://github.com/DmitriiDenisov/faces_picsart')
             return True
         elif update.message.text == 'Автор':
             update.message.reply_text('Автор: @DmitriiDenisov')
             return True
         elif update.message.text == 'Description':
-            update.message.reply_text('Send to chat your selfie, and the bot will cut you on the photo')
+            update.message.reply_text('Send to chat your selfie, and the bot will find you on the photo')
             return True
         elif update.message.text == 'Github project':
-            update.message.reply_text('Link: https://github.com/DmitriiDenisov/AutoSelfie_bot')
+            update.message.reply_text('Github of bot: https://github.com/DmitriiDenisov/AutoSelfie_bot')
+            update.message.reply_text('Github of Neural Network: https://github.com/DmitriiDenisov/faces_picsart')
             return True
         elif update.message.text == 'Author':
             update.message.reply_text('Author: @DmitriiDenisov')
