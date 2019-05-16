@@ -72,4 +72,4 @@ def predict(model, val_image, graph):
     pred_mask_red = np.zeros(pred_mask.shape + (3,), np.uint8)
     pred_mask_red[:, :, 0] = pred_mask.copy()
     blended_image = cv2.addWeighted(pred_mask_red, 1, val_image, 1, 0)
-    return blended_image, pred_mask
+    return blended_image, pred_mask, val_image

@@ -72,7 +72,7 @@ class AutoSelfieBot:
             return False
         # Делаем предсказание
         resized_img = np.array(resize_image(image, (240, 320))) / 255
-        prediction, alpha = predict(self.model, resized_img, self.graph)
+        prediction, alpha, foreground = predict(self.model, resized_img, self.graph)
 
         # Отправляем в Телеграм выделенную фотографию
         predicted_image = PIL.Image.fromarray(prediction)
@@ -84,7 +84,7 @@ class AutoSelfieBot:
 
         # Добавляем фон к фотографии:
         background = cv2.imread('../data/sea.jpg')
-        foreground = np.array(image)
+        # foreground = np.array(image)
         foreground = np.concatenate([foreground[:, :, 2].reshape(foreground.shape[:2] + (1,)),
                                      foreground[:, :, 1].reshape(foreground.shape[:2] + (1,)),
                                      foreground[:, :, 0].reshape(foreground.shape[:2] + (1,))], axis=2)

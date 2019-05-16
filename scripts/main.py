@@ -16,6 +16,6 @@ REQUEST_KWARGS = {
 f = open('../token.txt', 'r')
 token = f.read(100)
 
-AutoSelfieBot(token=token, request_kwargs=REQUEST_KWARGS, model_name='resnet_weights.17--0.95.hdf5.model')
+AutoSelfieBot(token=token, request_kwargs=REQUEST_KWARGS, model_name='unet_weights.49-val_loss0.12--0.96.hdf5.model')
 
 # dp.add_handler(RegexHandler("English", send_cat, pass_user_data=True))
