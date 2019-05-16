@@ -1,5 +1,8 @@
 import json
 from io import BytesIO
+import os, sys
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(PROJECT_PATH)
 
 import PIL.Image
 import cv2
@@ -122,7 +125,7 @@ class AutoSelfieBot:
             self.default_state(bot, update)
             return True
         elif update.message.text == 'Описание':
-            update.message.reply_text('Привет! Я умею искать людей на фотографиях. Лучшим форматом является фотография с фронтальной камеры твоего смартфона (т.е. с разрешением 240 x 320 пикселей). В противном случае я изменю размер вашего изображения на 240 х 320')
+            update.message.reply_text('Привет! Я умею искать людей на фотографиях. Пришли мне свою фотографию, лучшим форматом является фотография с фронтальной камеры твоего смартфона (т.е. с разрешением 240 x 320 пикселей). В противном случае я изменю размер вашего изображения на 240 х 320')
             return True
         elif update.message.text == 'Github проекта':
             update.message.reply_text('Github бота: https://github.com/DmitriiDenisov/AutoSelfie_bot')
@@ -132,7 +135,7 @@ class AutoSelfieBot:
             update.message.reply_text('Автор: @DmitriiDenisov')
             return True
         elif update.message.text == 'Description':
-            update.message.reply_text('Hello! I can find people in photos. The best format is a photo from the front camera  of your smartphone (i.e 240 x 320 pixels). Otherwise, I will resize you image to 240 x 320')
+            update.message.reply_text('Hello! I can find people in photos. Send me a picture of you, the best format is a photo from the front camera  of your smartphone (i.e 240 x 320 pixels). Otherwise, I will resize you image to 240 x 320')
             return True
         elif update.message.text == 'Github project':
             update.message.reply_text('Github of bot: https://github.com/DmitriiDenisov/AutoSelfie_bot')

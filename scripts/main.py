@@ -1,3 +1,7 @@
+import os, sys
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(PROJECT_PATH)
+
 from scripts.AutoSelfie_bot import AutoSelfieBot
 
 REQUEST_KWARGS = {
