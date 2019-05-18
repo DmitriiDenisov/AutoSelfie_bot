@@ -1,5 +1,6 @@
 import PIL.Image
 import cv2
+import socket
 import numpy as np
 
 
@@ -73,3 +74,13 @@ def predict(model, val_image, graph):
     pred_mask_red[:, :, 0] = pred_mask.copy()
     blended_image = cv2.addWeighted(pred_mask_red, 1, val_image, 1, 0)
     return blended_image, pred_mask, val_image
+
+
+def get_server_info():
+    try:
+        host_name = socket.gethostname()
+        host_ip = socket.gethostbyname(host_name)
+        print("Hostname :  ", host_name)
+        print("IP : ", host_ip)
+    except:
+        print("Unable to get Hostname and IP")

@@ -11,7 +11,7 @@ from telegram import ReplyKeyboardMarkup, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler
 
 from scripts.get_model import get_model
-from scripts.utils import write_log, read_photo_doc, resize_image, predict
+from scripts.utils import write_log, read_photo_doc, resize_image, predict, get_server_info
 
 
 class AutoSelfieBot:
@@ -144,6 +144,11 @@ class AutoSelfieBot:
         elif update.message.text == 'Author':
             update.message.reply_text('Author: @DmitriiDenisov')
             return True
+        elif update.message.text == 'Инфо сервера':
+            get_server_info()
+        elif update.message.text == 'Server info':
+            get_server_info()
+
         else:
             if self.all_users[update.message.chat_id]['language'] == 'English':
                 update.message.reply_text('I am waiting for a photo')
@@ -158,10 +163,10 @@ class AutoSelfieBot:
 
     def default_state(self, bot, update):
         if self.all_users[update.message.chat_id]['language'] == 'Russian':
-            custom_keyboard = [['Описание'], ['Github проекта', 'Автор']]
+            custom_keyboard = [['Описание', 'Github проекта'], ['Автор', 'Инфо сервера']]
             text = "Можешь выбрать действие или прислать фото"
         else:
-            custom_keyboard = [['Description'], ['Github project', 'Author']]
+            custom_keyboard = [['Description', 'Github project'], ['Author', 'Server info']]
             text = "You can choose an action or send a photo"
     
         reply_markup = ReplyKeyboardMarkup(custom_keyboard)
