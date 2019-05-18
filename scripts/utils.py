@@ -76,11 +76,10 @@ def predict(model, val_image, graph):
     return blended_image, pred_mask, val_image
 
 
-def get_server_info():
+def get_server_info(update):
     try:
         host_name = socket.gethostname()
         host_ip = socket.gethostbyname(host_name)
-        print("Hostname :  ", host_name)
-        print("IP : ", host_ip)
+        update.message.reply_text('Hostname : {} \nIP : {}'.format(host_name, host_ip))
     except:
         print("Unable to get Hostname and IP")

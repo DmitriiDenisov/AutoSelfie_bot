@@ -23,6 +23,7 @@ with open('../data/PID.txt', 'w') as f:
 def main():
     AutoSelfieBot(token=token, request_kwargs=REQUEST_KWARGS, model_name='resnet_weights.17--0.95.hdf5.model')
 
+
 if __name__ == '__main__':
     main()
 # dp.add_handler(RegexHandler("English", send_cat, pass_user_data=True))

@@ -145,9 +145,9 @@ class AutoSelfieBot:
             update.message.reply_text('Author: @DmitriiDenisov')
             return True
         elif update.message.text == 'Инфо сервера':
-            get_server_info()
+            get_server_info(update)
         elif update.message.text == 'Server info':
-            get_server_info()
+            get_server_info(update)
 
         else:
             if self.all_users[update.message.chat_id]['language'] == 'English':
