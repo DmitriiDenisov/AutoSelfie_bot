@@ -2,6 +2,7 @@ import PIL.Image
 import cv2
 import socket
 import numpy as np
+from requests import get
 
 
 def write_log(update):
@@ -79,7 +80,9 @@ def predict(model, val_image, graph):
 def get_server_info(update):
     try:
         host_name = socket.gethostname()
-        host_ip = socket.gethostbyname(host_name)
-        update.message.reply_text('Hostname : {} \nIP : {}'.format(host_name, host_ip))
+        # host_ip = socket.gethostbyname(host_name)
+        ip = get('https://api.ipify.org').text
+
+        update.message.reply_text('Hostname : {} \nIP : {}'.format(host_name, ip))
     except:
         print("Unable to get Hostname and IP")
