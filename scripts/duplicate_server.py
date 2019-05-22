@@ -8,7 +8,7 @@ from scripts.main import main
 
 
 server = {}
-with open("../server_parameters.txt") as f:
+with open(os.path.join(PROJECT_PATH, 'server_parameters.txt')) as f:
     for line in f:
        (key, val) = line[:-1].split(';')
        server[key] = val

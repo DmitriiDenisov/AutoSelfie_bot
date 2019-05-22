@@ -16,7 +16,7 @@ from scripts.utils import write_log, read_photo_doc, resize_image, predict, get_
 
 class AutoSelfieBot:
     def __init__(self, token, request_kwargs, model_name):
-        with open('../data/all_users.json', 'r') as fp:
+        with open(os.path.join(PROJECT_PATH, 'data', 'all_users.json'), 'r') as fp:
             temp_dict = json.load(fp)
             self.all_users = {int(key): value for key, value in temp_dict.items()}
 
@@ -62,7 +62,7 @@ class AutoSelfieBot:
         # Считываем присланное фото/документ
         read_photo_doc(bot, update)
         try:
-            image = PIL.Image.open('../data/try.jpg')
+            image = PIL.Image.open(os.path.join(PROJECT_PATH, 'data', 'try.jpg'))
             # foreground = cv2.imread('../data/try.jpg')
         except:
             if self.all_users[update.message.chat_id]['language'] == 'English':
@@ -83,7 +83,7 @@ class AutoSelfieBot:
         update.message.reply_photo(photo=bio)
 
         # Добавляем фон к фотографии:
-        background = cv2.imread('../data/sea.jpg')
+        background = cv2.imread(os.path.join(PROJECT_PATH, 'data', 'sea.jpg'))
         # foreground = np.array(image)
         foreground = np.concatenate([foreground[:, :, 2].reshape(foreground.shape[:2] + (1,)),
                                      foreground[:, :, 1].reshape(foreground.shape[:2] + (1,)),
@@ -113,14 +113,14 @@ class AutoSelfieBot:
         if update.message.text == 'English':
             self.all_users[chat_id]['language'] = 'English'
             update.message.reply_text('You chosed English language')
-            with open('../data/all_users.json', 'w') as fp:
+            with open(os.path.join(PROJECT_PATH, 'data', 'all_users.json'), 'w') as fp:
                 json.dump(self.all_users, fp)
             self.default_state(bot, update)
             return True
         elif update.message.text == 'Russian':
             self.all_users[chat_id]['language'] = 'Russian'
             update.message.reply_text('Ты выбрал Русский язык')
-            with open('../data/all_users.json', 'w') as fp:
+            with open(os.path.join(PROJECT_PATH, 'data', 'all_users.json'), 'w') as fp:
                 json.dump(self.all_users, fp)
             self.default_state(bot, update)
             return True

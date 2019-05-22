@@ -12,11 +12,11 @@ REQUEST_KWARGS = {
     }
 }
 
-f = open('../token.txt', 'r')
+f = open(os.path.join(PROJECT_PATH, 'token.txt'), 'r')
 token = f.read(100)
 
 currentr_PID = os.getpid()
-with open('../data/PID.txt', 'w') as f:
+with open(os.path.join(PROJECT_PATH, 'data', 'PID.txt'), 'w') as f:
     f.write(str(currentr_PID))
 
 

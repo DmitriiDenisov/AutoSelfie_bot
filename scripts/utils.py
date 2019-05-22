@@ -1,3 +1,7 @@
+import os, sys
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(PROJECT_PATH)
+
 import PIL.Image
 import cv2
 import socket
@@ -6,7 +10,7 @@ from requests import get
 
 
 def write_log(update):
-    with open('../data/logs.txt', 'a') as text_file:
+    with open(os.path.join(PROJECT_PATH, 'data', 'logs.txt'), 'a') as text_file:
         try:
             if update.message.text:
                 text_file.write('{chat_id},{username},{first_name},{second_name},{text},,,{date}\n'.format(chat_id=update.message.chat.id,
@@ -44,12 +48,12 @@ def read_photo_doc(bot, update):
         # Note: For downloading photos, keep in mind that update.message.photo is an array
         # of different photo sizes. Use update.message.photo[-1] to get the biggest size.
         photo_file = bot.getFile(file)
-        photo_file.download('../data/try.jpg')
+        photo_file.download(os.path.join(PROJECT_PATH, 'data', 'try.jpg'))
         return True
     doc = update.message.document
     if doc:
         doc_file = bot.getFile(doc)
-        doc_file.download('../data/try.jpg')
+        doc_file.download(os.path.join(PROJECT_PATH, 'data', 'try.jpg'))
         return True
     return False
 
