@@ -20,7 +20,7 @@ class AutoSelfieBot:
             temp_dict = json.load(fp)
             self.all_users = {int(key): value for key, value in temp_dict.items()}
 
-        self.model, self.graph = get_model(model_name) # UNCOMMENT !!!
+        # self.model, self.graph = get_model(model_name) # UNCOMMENT !!!
 
         updater = Updater(token, request_kwargs=request_kwargs)
         dp = updater.dispatcher
@@ -148,8 +148,12 @@ class AutoSelfieBot:
             get_server_info(update)
         elif update.message.text == 'Server info':
             get_server_info(update)
-        elif update.message.text.lower() == 'умри' or update.message.text.lower() == 'die':
-            raise SystemExit
+        elif update.message.text.lower() == 'умри':
+            update.message.reply_text('Завершаю работу')
+            os._exit(-1)
+        elif update.message.text.lower() == 'die':
+            update.message.reply_text('Finishing work')
+            os._exit(-1)
 
         else:
             if self.all_users[update.message.chat_id]['language'] == 'English':
