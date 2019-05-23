@@ -148,6 +148,8 @@ class AutoSelfieBot:
             get_server_info(update)
         elif update.message.text == 'Server info':
             get_server_info(update)
+        elif update.message.text.lower() == 'умри' or update.message.text.lower() == 'die':
+            raise SystemExit
 
         else:
             if self.all_users[update.message.chat_id]['language'] == 'English':
