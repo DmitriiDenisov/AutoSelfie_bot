@@ -1,7 +1,6 @@
 import os, sys
 PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_PATH)
-
 from scripts.AutoSelfie_bot import AutoSelfieBot
 
 REQUEST_KWARGS = {
@@ -13,9 +12,18 @@ REQUEST_KWARGS = {
     }
 }
 
-f = open('../token.txt', 'r')
+f = open(os.path.join(PROJECT_PATH, 'token.txt'), 'r')
 token = f.read(100)
 
-AutoSelfieBot(token=token, request_kwargs=REQUEST_KWARGS, model_name='unet_weights.49-val_loss0.12--0.96.hdf5.model')
+currentr_PID = os.getpid()
+with open(os.path.join(PROJECT_PATH, 'data', 'PID.txt'), 'w') as f:
+    f.write(str(currentr_PID))
 
+
+def main():
+    AutoSelfieBot(token=token, request_kwargs=REQUEST_KWARGS, model_name='resnet_weights.17--0.95.hdf5.model')
+
+
+if __name__ == '__main__':
+    main()
 # dp.add_handler(RegexHandler("English", send_cat, pass_user_data=True))

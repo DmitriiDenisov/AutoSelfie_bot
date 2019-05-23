@@ -1,3 +1,7 @@
+import os, sys
+PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(PROJECT_PATH)
+
 from keras.models import load_model
 import numpy as np
 import keras.backend as K
@@ -33,8 +37,7 @@ def dice_coef_K(y_true, y_pred, smooth=1):
 
 
 def get_model(model_name):
-    model = load_model('../models/{}'.format(model_name),
-                      custom_objects={'dice_coef_K': dice_coef_K, 'my_dice_metric': my_dice_metric})
+    model = load_model(os.path.join(PROJECT_PATH, 'models', model_name), custom_objects={'dice_coef_K': dice_coef_K, 'my_dice_metric': my_dice_metric})
     model._make_predict_function()
     graph = tf.get_default_graph()
     print('Model read!')

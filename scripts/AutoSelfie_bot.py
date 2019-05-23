@@ -11,12 +11,12 @@ from telegram import ReplyKeyboardMarkup, ChatAction
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, RegexHandler
 
 from scripts.get_model import get_model
-from scripts.utils import write_log, read_photo_doc, resize_image, predict
+from scripts.utils import write_log, read_photo_doc, resize_image, predict, get_server_info
 
 
 class AutoSelfieBot:
     def __init__(self, token, request_kwargs, model_name):
-        with open('../data/all_users.json', 'r') as fp:
+        with open(os.path.join(PROJECT_PATH, 'data', 'all_users.json'), 'r') as fp:
             temp_dict = json.load(fp)
             self.all_users = {int(key): value for key, value in temp_dict.items()}
 
@@ -62,7 +62,7 @@ class AutoSelfieBot:
         # Считываем присланное фото/документ
         read_photo_doc(bot, update)
         try:
-            image = PIL.Image.open('../data/try.jpg')
+            image = PIL.Image.open(os.path.join(PROJECT_PATH, 'data', 'try.jpg'))
             # foreground = cv2.imread('../data/try.jpg')
         except:
             if self.all_users[update.message.chat_id]['language'] == 'English':
@@ -83,7 +83,7 @@ class AutoSelfieBot:
         update.message.reply_photo(photo=bio)
 
         # Добавляем фон к фотографии:
-        background = cv2.imread('../data/sea.jpg')
+        background = cv2.imread(os.path.join(PROJECT_PATH, 'data', 'sea.jpg'))
         # foreground = np.array(image)
         foreground = np.concatenate([foreground[:, :, 2].reshape(foreground.shape[:2] + (1,)),
                                      foreground[:, :, 1].reshape(foreground.shape[:2] + (1,)),
@@ -113,14 +113,14 @@ class AutoSelfieBot:
         if update.message.text == 'English':
             self.all_users[chat_id]['language'] = 'English'
             update.message.reply_text('You chosed English language')
-            with open('../data/all_users.json', 'w') as fp:
+            with open(os.path.join(PROJECT_PATH, 'data', 'all_users.json'), 'w') as fp:
                 json.dump(self.all_users, fp)
             self.default_state(bot, update)
             return True
         elif update.message.text == 'Russian':
             self.all_users[chat_id]['language'] = 'Russian'
             update.message.reply_text('Ты выбрал Русский язык')
-            with open('../data/all_users.json', 'w') as fp:
+            with open(os.path.join(PROJECT_PATH, 'data', 'all_users.json'), 'w') as fp:
                 json.dump(self.all_users, fp)
             self.default_state(bot, update)
             return True
@@ -144,6 +144,11 @@ class AutoSelfieBot:
         elif update.message.text == 'Author':
             update.message.reply_text('Author: @DmitriiDenisov')
             return True
+        elif update.message.text == 'Инфо сервера':
+            get_server_info(update)
+        elif update.message.text == 'Server info':
+            get_server_info(update)
+
         else:
             if self.all_users[update.message.chat_id]['language'] == 'English':
                 update.message.reply_text('I am waiting for a photo')
@@ -158,10 +163,10 @@ class AutoSelfieBot:
 
     def default_state(self, bot, update):
         if self.all_users[update.message.chat_id]['language'] == 'Russian':
-            custom_keyboard = [['Описание'], ['Github проекта', 'Автор']]
+            custom_keyboard = [['Описание', 'Github проекта'], ['Автор', 'Инфо сервера']]
             text = "Можешь выбрать действие или прислать фото"
         else:
-            custom_keyboard = [['Description'], ['Github project', 'Author']]
+            custom_keyboard = [['Description', 'Github project'], ['Author', 'Server info']]
             text = "You can choose an action or send a photo"
     
         reply_markup = ReplyKeyboardMarkup(custom_keyboard)
