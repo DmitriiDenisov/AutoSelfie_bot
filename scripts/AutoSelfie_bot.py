@@ -20,7 +20,7 @@ class AutoSelfieBot:
             temp_dict = json.load(fp)
             self.all_users = {int(key): value for key, value in temp_dict.items()}
 
-        # self.model, self.graph = get_model(model_name) # UNCOMMENT !!!
+        self.model, self.graph = get_model(model_name) # UNCOMMENT !!!
 
         updater = Updater(token, request_kwargs=request_kwargs)
         dp = updater.dispatcher

@@ -1,0 +1,15 @@
+# Наследуемся от Python:3 контейнера
+FROM python:3
+# Устанавливаем essentials для Питона
+RUN set -ex \
+    && apt-get update -y \
+    && apt-get install -y python-pip python-dev build-essential
+# Копируем всё из текущей папки в /app
+COPY . /app
+# Устанавливаем app в кач-ве текующей директории
+WORKDIR /app
+# Устанавливаем все зависимости
+RUN pip install -r requirements.txt
+# Запускаем приложение
+ENTRYPOINT ["python3"]
+CMD ["scripts/duplicate_server.py"]
