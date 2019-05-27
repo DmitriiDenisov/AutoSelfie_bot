@@ -19,8 +19,10 @@ while True:
     else:
       print(host_name, 'Server is down!')
       break
-      
-sys.stdout.write("Server has died!")
-sys.stdout.flush()
+  
+
+sys.stderr.write('Server has died!\n')
+# sys.stdout.write("Server has died!")
+# sys.stdout.flush()
 # logging.info("Server has died!")
 main()
