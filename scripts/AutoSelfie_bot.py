@@ -1,6 +1,7 @@
 import json
 from io import BytesIO
 import os, sys
+
 PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_PATH)
 
@@ -20,7 +21,7 @@ class AutoSelfieBot:
             temp_dict = json.load(fp)
             self.all_users = {int(key): value for key, value in temp_dict.items()}
 
-        self.model, self.graph = get_model(model_name) # UNCOMMENT !!!
+        self.model, self.graph = get_model(model_name)  # UNCOMMENT !!!
 
         updater = Updater(token, request_kwargs=request_kwargs)
         dp = updater.dispatcher
@@ -38,22 +39,22 @@ class AutoSelfieBot:
         first_name = update.effective_user.first_name
         update.message.reply_text('Hi {}!'.format(first_name))
         self.all_users[update.message.chat_id] = {'first_name': first_name}
-    
+
         custom_keyboard = [['English'], ['Russian']]
         reply_markup = ReplyKeyboardMarkup(custom_keyboard)
-    
+
         q = bot.send_message(chat_id=update.message.chat_id,
-                         text="Choose language:",
-                         reply_markup=reply_markup)
-    
+                             text="Choose language:",
+                             reply_markup=reply_markup)
+
         write_log(update)
         # return LANG
-        #q = bot.send_message(chat_id=update.message.chat_id,
+        # q = bot.send_message(chat_id=update.message.chat_id,
         #                 text="Please choose language:",
         #                 reply_markup=reply_markup,
         #                resize_keyboard=True)
-        #print(q)
-    
+        # print(q)
+
     def photos(self, bot, update):
         # Пишем лог
         write_log(update)
@@ -96,8 +97,8 @@ class AutoSelfieBot:
         background = cv2.multiply(1.0 - alpha, background)
         outImage = cv2.add(foreground, background)
         outImage = np.concatenate([outImage[:, :, 2].reshape(outImage.shape[:2] + (1,)),
-                                    outImage[:, :, 1].reshape(outImage.shape[:2] + (1,)),
-                                    outImage[:, :, 0].reshape(outImage.shape[:2] + (1,))], axis=2)
+                                   outImage[:, :, 1].reshape(outImage.shape[:2] + (1,)),
+                                   outImage[:, :, 0].reshape(outImage.shape[:2] + (1,))], axis=2)
 
         # Отправляем в Телеграм с фоном
         with_background = PIL.Image.fromarray(outImage.astype('uint8'))
@@ -125,7 +126,8 @@ class AutoSelfieBot:
             self.default_state(bot, update)
             return True
         elif update.message.text == 'Описание':
-            update.message.reply_text('Привет! Я умею искать людей на фотографиях. Пришли мне свою фотографию, лучшим форматом является фотография с фронтальной камеры твоего смартфона (т.е. с разрешением 240 x 320 пикселей). В противном случае я изменю размер вашего изображения на 240 х 320')
+            update.message.reply_text(
+                'Привет! Я умею искать людей на фотографиях. Пришли мне свою фотографию, лучшим форматом является фотография с фронтальной камеры твоего смартфона (т.е. с разрешением 240 x 320 пикселей). В противном случае я изменю размер вашего изображения на 240 х 320')
             return True
         elif update.message.text == 'Github проекта':
             update.message.reply_text('Github бота: https://github.com/DmitriiDenisov/AutoSelfie_bot')
@@ -135,7 +137,8 @@ class AutoSelfieBot:
             update.message.reply_text('Автор: @DmitriiDenisov')
             return True
         elif update.message.text == 'Description':
-            update.message.reply_text('Hello! I can find people in photos. Send me a picture of you, the best format is a photo from the front camera  of your smartphone (i.e 240 x 320 pixels). Otherwise, I will resize you image to 240 x 320')
+            update.message.reply_text(
+                'Hello! I can find people in photos. Send me a picture of you, the best format is a photo from the front camera  of your smartphone (i.e 240 x 320 pixels). Otherwise, I will resize you image to 240 x 320')
             return True
         elif update.message.text == 'Github project':
             update.message.reply_text('Github of bot: https://github.com/DmitriiDenisov/AutoSelfie_bot')
@@ -174,9 +177,9 @@ class AutoSelfieBot:
         else:
             custom_keyboard = [['Description', 'Github project'], ['Author', 'Server info']]
             text = "You can choose an action or send a photo"
-    
+
         reply_markup = ReplyKeyboardMarkup(custom_keyboard)
-    
+
         bot.send_message(chat_id=update.message.chat_id,
-                             text=text,
-                             reply_markup=reply_markup)
+                         text=text,
+                         reply_markup=reply_markup)

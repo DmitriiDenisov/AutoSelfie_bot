@@ -1,6 +1,8 @@
 import os, sys
+
 PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_PATH)
+
 from scripts.AutoSelfie_bot import AutoSelfieBot
 
 REQUEST_KWARGS = {
@@ -14,10 +16,6 @@ REQUEST_KWARGS = {
 
 f = open(os.path.join(PROJECT_PATH, 'token.txt'), 'r')
 token = f.read(100)
-
-currentr_PID = os.getpid()
-with open(os.path.join(PROJECT_PATH, 'data', 'PID.txt'), 'w') as f:
-    f.write(str(currentr_PID))
 
 
 def main():
