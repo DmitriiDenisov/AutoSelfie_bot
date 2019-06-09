@@ -17,9 +17,11 @@ Dmitrii Denisov;
 Telegram: @DmitriiDenisov
 
 ### Example of work:
-Solarized dark             |  Solarized Ocean
+             |  
 :-------------------------:|:-------------------------:
 ![](https://psv4.userapi.com/c848136/u6729856/docs/d5/2f8c48949113/Screen_Shot_2019-06-09_at_19_02_02.png?extra=WU2FwQIeplhUgXGFT4s34qIsSbRzaTA4mxBFinqQ9RUMcBDPKmSkKpNaLMFVab8bEoKXYDS2Nno-EBihtAKQpBSaS-uknIHVm1hq-W0w_rwBgJqxWT_sSDakB2DP3Q0i-Z90mnKc9HwaTMR4)  |  ![](https://psv4.userapi.com/c848320/u6729856/docs/d12/d7e442d4a8ca/Screen_Shot_2019-06-09_at_19_02_12.png?extra=tcpAwHPUjjHNPbPOP2UerIIH778uRHEbZN6I5PAD_Yk2BmMNV2YHXiJK6hhwDvXUmeVBMhfSV58CFiuKcuHZ-z3LjqOydlQVv6rnNgMLeLXZMAhlJSKiqhqLdB-cKXB1vX6A4jpmBUN_bqh7)
+
+![alt-text-1](https://psv4.userapi.com/c848136/u6729856/docs/d5/2f8c48949113/Screen_Shot_2019-06-09_at_19_02_02.png?extra=WU2FwQIeplhUgXGFT4s34qIsSbRzaTA4mxBFinqQ9RUMcBDPKmSkKpNaLMFVab8bEoKXYDS2Nno-EBihtAKQpBSaS-uknIHVm1hq-W0w_rwBgJqxWT_sSDakB2DP3Q0i-Z90mnKc9HwaTMR4 "title-1") ![alt-text-2](https://psv4.userapi.com/c848320/u6729856/docs/d12/d7e442d4a8ca/Screen_Shot_2019-06-09_at_19_02_12.png?extra=tcpAwHPUjjHNPbPOP2UerIIH778uRHEbZN6I5PAD_Yk2BmMNV2YHXiJK6hhwDvXUmeVBMhfSV58CFiuKcuHZ-z3LjqOydlQVv6rnNgMLeLXZMAhlJSKiqhqLdB-cKXB1vX6A4jpmBUN_bqh7 "title-2")
 
 
 
