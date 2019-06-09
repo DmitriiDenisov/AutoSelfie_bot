@@ -25,12 +25,3 @@ Telegram: @DmitriiDenisov
 ![alt-text-1](https://psv4.userapi.com/c848320/u6729856/docs/d6/eb84b77a7a15/Screen_Shot_2019-06-09_at_19_13_38.png?extra=tDiTaKhYBV64EA2RUy844LWqrkM0kKekXv3DaFdPZ4p0NSO2CQHz9nEP8mh3Lp_WSpYBPfe8OrDq61Hm0FJtx3bMizzcDc0S60EJtPP9G6ObXresksO54ro0B5sQ26M2cMUor3apzLse9RiO) ![alt-text-2](https://psv4.userapi.com/c848216/u6729856/docs/d11/eb99983263d7/Screen_Shot_2019-06-09_at_19_13_23.png?extra=CmvhnOVoVkDFzQtOUnuF4WdgM0zTKJY2_O9TJiSvV43WN8AQRgHbMOf7dL5tYH2gUueuZVY0FSY5ZxhB_QF6J3U8Mb_9XHNe12g4J5haXY2qwJZt62wnr8yn4KzlZFkp-1Go2t1N7yqr8cqw "title-2")
 
 
-
-
-<p align="center">
-  <img src="your_relative_path_here" width="350" title="hover text">
-  <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
-</p>
-
-
-
