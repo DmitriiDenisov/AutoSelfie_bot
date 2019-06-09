@@ -6,23 +6,18 @@ It is small demo for my another repo: https://github.com/DmitriiDenisov/faces_pi
 ### Fast Launch instructions:
 
 1. Clone repository 
-2. Run init.py: it will download data and models files
-3. Run train_generator.py in order to train Neural Network
-
-For predciton: use scripts/prediction.py file 
-
-For visualization: use scripts/plot.py file
+2. Run init.py: it will download model file for you
+3. Create file token.txt in root directory and place there token of your Telegram bot
+4. (Optional) Create file server_parameters.txt in root directory and place there internal IP of your server (this is only for duplicating your server)
+5. Run from root directory ```sudo docker build -t selphie_image -f Dockerfile.server .```
+6. Run from root directory ```docker run -v `pwd`/models:/app/models -d --name selfie_cont --restart always --hostname $(hostname) selphie_image```
 
 ### Author
 Dmitrii Denisov; 
 Telegram: @DmitriiDenisov
 
-### Example of prediction:
+### Example of work:
 <p align="center">
-  <img src="https://psv4.userapi.com/c848224/u6729856/docs/d17/094d8de70832/ex_3.png?extra=G8s1YldFzXJmlxZjwvULwzZU2YyZ2L9agMK0YX3nBgDYzM_jMnWCURGn1KimO9iFFdYVt6oaeBHSROyOOHGZdGz690MukKbGJvjwtaLxpcPO4kvxCOaE0329ayHVHrmM_d_Lam6QTEHy7Sx-" width="450" alt="accessibility text">
+  <img src="" width="450" alt="accessibility text">
 </p>
 
-### Neural Network Architecture:
-<p align="center">
-  <img src="https://psv4.userapi.com/c848324/u6729856/docs/d13/400a84701552/my_final_model_2.png?extra=xLjBkp2fu0fMmTUEbgmCGU1bYB60alsjxhY3tJEzJrGXXOXVWtlLgH9dddTOcJ5ThH5s-NGS-I0vXOoFQfObbdd7B16gjsG0OWXT71R9qjfFRZo-JGr6Dm7puM2v8ZNTUbSo2XjOVWGh39gP" width="700" alt="accessibility text">
-</p>
