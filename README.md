@@ -1,7 +1,6 @@
-# AutoSelfie_bot
+# AutoSelfie_bot. Telegram:  @AutoSelphi_bot
 
 ### Description:
-**Telegram bot: @AutoSelphi_bot** 
 
 Telegram Bot for Automate Selphi segmentation
 It is small demo of the work of the neural network from my project: 
