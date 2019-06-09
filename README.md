@@ -17,7 +17,7 @@ Dmitrii Denisov;
 Telegram: @DmitriiDenisov
 
 ### Example of work:
-<p align="center">
+<p align="left">
   <img src="https://psv4.userapi.com/c848220/u6729856/docs/d3/9cab01e89043/Screen_Shot_2019-06-09_at_19_01_45.png?extra=vBB3xusBTBXH6Kfv8imCIjQkY74RL8ksSptO6fnRxrFW9QbhyaZ-Fdv5fQwi7IKaUVGreZa49Rjt2QRsOcfTq21Y2xyfr5gq8JROUKg_0BjiFIcRpRnyUvD7pldWs3HoZW2Q3l2cgvU4woAl" width="450" alt="accessibility text">
 </p>
 
