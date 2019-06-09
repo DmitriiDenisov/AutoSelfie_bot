@@ -1,8 +1,11 @@
 # AutoSelfie_bot
 
 ### Description:
+**Telegram bot: @AutoSelphi_bot** 
+
 Telegram Bot for Automate Selphi segmentation
-It is small demo for my another repo: https://github.com/DmitriiDenisov/faces_picsart
+It is small demo of the work of the neural network from my project: 
+https://github.com/DmitriiDenisov/faces_picsart
 ### Fast Launch instructions:
 
 1. Clone repository 
