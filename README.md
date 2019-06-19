@@ -24,6 +24,6 @@ Telegram: @DmitriiDenisov
 
 ![alt-text-1](https://i.ibb.co/h8hfFCb/Screen-Shot-2019-06-09-at-19-02-02.png "title-1") ![alt-text-2](https://i.ibb.co/NrLZgNK/Screen-Shot-2019-06-09-at-19-02-12.png  "title-2")
 ![alt-text-1](https://i.ibb.co/Vq19TNp/Screen-Shot-2019-06-09-at-19-03-51.png "title-1") ![alt-text-2](https://i.ibb.co/Fn3GBjy/Screen-Shot-2019-06-09-at-19-04-38.png "title-2")
-[alt-text-2](https://i.ibb.co/WnxW9xh/Screen-Shot-2019-06-09-at-19-13-23.png "title-2")
+![alt-text-2](https://i.ibb.co/WnxW9xh/Screen-Shot-2019-06-09-at-19-13-23.png "title-2")
 
 
