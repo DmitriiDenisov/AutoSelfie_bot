@@ -1,5 +1,5 @@
 paramiko==2.4.2
-Pillow==5.0.0
+Pillow==6.2.0
 opencv-python
 numpy
 python-telegram-bot
