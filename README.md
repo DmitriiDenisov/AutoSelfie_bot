@@ -13,7 +13,7 @@ https://github.com/DmitriiDenisov/faces_picsart
 4. Create files `all_users.json` and `logs.txt` in `data` folder
 4. (Optional) Create file server_parameters.txt in root directory and place there internal IP of your server (this is only for duplicating your server)
 5. Run from root directory ```sudo docker build -t selphie_image -f Dockerfile.server .```
-6. Run from root directory ```docker run -v `pwd`/models:/app/models -v `pwd`/token.txt:/app/token.txt --name selfie_cont --restart always --hostname $(hostname) selphie_image_new```
+6. Run from root directory ``` docker run -v `pwd`/models:/app/models -v `pwd`/token.txt:/app/token.txt --name selfie_cont -d --restart always --hostname $(hostname) dmitrydenisov/selphie_image```
 
 ### Author
 Dmitrii Denisov; 
