@@ -1,10 +1,10 @@
 paramiko==2.4.2
 Pillow==6.2.0
-opencv-python
-numpy
+numpy==1.16.3
+tensorflow==1.13.1
+Keras==2.2.4
+opencv-python==4.1.0.25
+PySocks==1.7.0
 python-telegram-bot
 python-telegram-bot[socks]
-PySocks
-tensorflow
 requests
-Keras==2.2.4

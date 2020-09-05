@@ -1,15 +1,13 @@
-# Наследуемся от Python:3 контейнера
-FROM python:3
-# Устанавливаем essentials для Питона
-RUN set -ex \
-    && apt-get update -y \
-    && apt-get install -y python-pip python-dev build-essential
-# Копируем всё из текущей папки в /app
+FROM python:3.6-slim
+
+# RUN apt-get update && apt-get install libgtk2.0-dev -y
+
 COPY . /app
-# Устанавливаем app в кач-ве текующей директории
 WORKDIR /app
+
+# RUN apt-get update && apt-get install libgtk2.0-dev -y
 # Устанавливаем все зависимости
-RUN pip install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt
 # Запускаем приложение
 ENTRYPOINT ["python3"]
 CMD ["scripts/main.py"]
