@@ -10,7 +10,10 @@ from requests import get
 
 
 def write_log(update):
-    with open(os.path.join(PROJECT_PATH, 'data', 'logs.txt'), 'a') as text_file:
+    path_ = os.path.join(PROJECT_PATH, 'data', 'logs.txt')
+    if not os.path.isfile(path_):
+        open(path_, 'a').close()
+    with open(path_, 'a') as text_file:
         try:
             if update.message.text:
                 text_file.write('{chat_id},{username},{first_name},{second_name},{text},,,{date}\n'.format(chat_id=update.message.chat.id,
