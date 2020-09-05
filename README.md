@@ -11,8 +11,11 @@ https://github.com/DmitriiDenisov/faces_picsart
 2. Run init.py: it will download model file for you
 3. Create file token.txt in root directory and place there token of your Telegram bot (you can get it from @BotFather by typing name of your bot
 4. (Optional) Create file server_parameters.txt in root directory and place there internal IP of your server (this is only for duplicating your server)
+
 5.1 (EITHER) Run `docker pull dmitrydenisov/selphie_image`
+
 5.2 (EITHER) Run from root directory ```sudo docker build -t selphie_image -f Dockerfile.server .```
+
 6. Run from root directory ``` docker run -v `pwd`/models:/app/models -v `pwd`/token.txt:/app/token.txt --name selfie_cont -d --restart always --hostname $(hostname) dmitrydenisov/selphie_image```
 
 ### Author
