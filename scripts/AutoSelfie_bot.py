@@ -19,7 +19,9 @@ class AutoSelfieBot:
     def __init__(self, token, request_kwargs, model_name):
         path_ = os.path.join(PROJECT_PATH, 'data', 'all_users.json')
         if not os.path.isfile(path_):
-                open(path_, 'a').close()
+            with open(path_, "w+") as f:
+                json.dump(dict(), f)
+                # open(path_, 'a').close()
         with open(path_, 'r') as fp:
             temp_dict = json.load(fp)
             self.all_users = {int(key): value for key, value in temp_dict.items()}
