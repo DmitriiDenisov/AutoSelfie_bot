@@ -5,6 +5,7 @@
 Telegram Bot for Automate Selphi segmentation
 It is small demo of the work of the neural network from my project: 
 https://github.com/DmitriiDenisov/faces_picsart
+
 ### Fast Launch instructions:
 
 1. Clone repository 
