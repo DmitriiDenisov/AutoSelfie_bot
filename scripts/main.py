@@ -5,6 +5,8 @@ sys.path.append(PROJECT_PATH)
 
 from scripts.AutoSelfie_bot import AutoSelfieBot
 
+REQUEST_KWARGS = dict()
+"""
 REQUEST_KWARGS = {
     'proxy_url': 'socks5://80.211.195.141:1488',
     # Optional, if you need authentication:
@@ -13,6 +15,7 @@ REQUEST_KWARGS = {
         'password': 'x555abr',
     }
 }
+"""
 
 f = open(os.path.join(PROJECT_PATH, 'token.txt'), 'r')
 token = f.read(100)
