@@ -1,4 +1,4 @@
-Jinja2==2.8
+Jinja2==2.10.1
 jsonpatch==1.10
 jsonpointer==1.9
 Keras==2.2.4
